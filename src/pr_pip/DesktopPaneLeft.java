@@ -6,7 +6,7 @@ import java.awt.*;
 public class DesktopPaneLeft {
     public JDesktopPane desktopPaneLeft;
 
-    public void desktopPaneLeftInit(mainFrame frm){
+    public void desktopPaneLeftInit(MainFrame frm){
         desktopPaneLeft = new JDesktopPane();
         desktopPaneLeft.setBackground(Color.LIGHT_GRAY);
         desktopPaneLeft.setBounds(0, 0, 200, frm.frame.getBounds().height);

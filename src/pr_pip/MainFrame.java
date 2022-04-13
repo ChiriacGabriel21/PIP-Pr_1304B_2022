@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class mainFrame {
+public class MainFrame {
     public JFrame frame;
 
     public JFrame getFrame(){

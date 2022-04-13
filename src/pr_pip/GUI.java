@@ -1,17 +1,11 @@
-import pr_pip.*;
+package pr_pip;
+
 import java.awt.*;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.io.File;
+public class GUI {
 
-
-public class V1 {
-
-	private mainFrame mainFrame = new mainFrame();
+	private MainFrame mainFrame = new MainFrame();
 	private DesktopPaneLeft paneLeft = new DesktopPaneLeft();
 	private DesktopPaneRight paneRight = new DesktopPaneRight();
 	private AddButton addButton = new AddButton();
@@ -26,7 +20,7 @@ public class V1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					V1 window = new V1();
+					GUI window = new GUI();
 					window.mainFrame.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +32,7 @@ public class V1 {
 	/**
 	 * Create the application.
 	 */
-	public V1() {
+	public GUI() {
 		initialize();
 	}
 	

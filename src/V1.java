@@ -1,30 +1,8 @@
 import java.awt.*;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-import javax.swing.JSpinner;
-import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPopupMenu;
-import javax.swing.JToolBar;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JMenuItem;
-import javax.swing.JList;
-
-import org.openide.awt.DropDownButtonFactory;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.File;
@@ -33,6 +11,8 @@ import java.io.File;
 public class V1 {
 
 	private JFrame frame;
+	private JDesktopPane desktopPane_right;
+	private JDesktopPane desktopPane_left;
 
 	/**
 	 * Launch the application.
@@ -56,31 +36,14 @@ public class V1 {
 	public V1() {
 		initialize();
 	}
-
-	private JPopupMenu createDropDownMenu(){
-		JPopupMenu popupMenu = new JPopupMenu();
-		 
-		JMenuItem menuItemCreateCar = new JMenuItem("Car");
-		popupMenu.add(menuItemCreateCar);
-		 
-		JMenuItem menuItemCreateTrafficLight = new JMenuItem("Traffic Light");
-		popupMenu.add(menuItemCreateTrafficLight);
-		 
-		JMenuItem menuItemCreateRoadSign = new JMenuItem("Road Sign");
-		popupMenu.add(menuItemCreateRoadSign);
-
-		JMenuItem menuItemCreateBuilding = new JMenuItem("Building");
-		popupMenu.add(menuItemCreateBuilding);
-		
-		return popupMenu;
-	}
-	
 	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		desktopPane_right = new JDesktopPane();
+		desktopPane_left = new JDesktopPane();
 
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
@@ -88,12 +51,11 @@ public class V1 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(Color.GRAY);
-		desktopPane.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
-		frame.getContentPane().add(desktopPane);
 
-		JDesktopPane desktopPane_left = new JDesktopPane();
+		desktopPane_right.setBackground(Color.GRAY);
+		desktopPane_right.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
+		frame.getContentPane().add(desktopPane_right);
+
 		desktopPane_left.setBackground(Color.LIGHT_GRAY);
 		desktopPane_left.setBounds(0, 0, 200, frame.getBounds().height);
 		frame.getContentPane().add(desktopPane_left);
@@ -103,27 +65,44 @@ public class V1 {
 			public void componentResized(ComponentEvent e) {
 				 if (e.getSource() == frame) {
 
-				        desktopPane.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
+				        desktopPane_right.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
 					 	desktopPane_left.setBounds(0, 0, 200, frame.getBounds().height);
 			}
 		}});
 		
 
-		
+		//functie
 		JButton btnAdd = new JButton("ADD");
-		btnAdd.setBounds((desktopPane_left.getBounds().width/2) - (89/2), 11, 89, 50);
+		btnAdd.setBounds((desktopPane_left.getBounds().width / 2)-30, 22, 120, 30);
+
+		String[] choiceList = {"Car","Traffic Light","Road Sign","Building","+ADD Option"};
+		JComboBox chooseFromList = new JComboBox(choiceList);
+		chooseFromList.setSelectedIndex(-1);
+		chooseFromList.setBounds((desktopPane_left.getBounds().width / 2)-30, 100, 120, 30);
+
 		desktopPane_left.add(btnAdd);
-		
-		JPopupMenu popupMenu = createDropDownMenu();
+		desktopPane_left.add(chooseFromList);
+
+		//functie
 		try {
-			Image image = ImageIO.read(new File("./src/test.png")).getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-			JButton dropDownButton = DropDownButtonFactory.createDropDownButton(new ImageIcon(image), popupMenu);
-			dropDownButton.setBounds((desktopPane_left.getBounds().width/2) - (89/2), 100, 89, 50);
-			desktopPane_left.add(dropDownButton);
+			Image cropImage = ImageIO.read(new File("./src/images/test.png")).getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+			ImageIcon cropIcon = new ImageIcon(cropImage);
+
+			Image addImage = ImageIO.read(new File("./src/images/plusSign.png")).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+			ImageIcon addIcon = new ImageIcon(addImage);
+
+			JLabel cropLabel = new JLabel();
+			cropLabel.setBounds((desktopPane_left.getBounds().width / 2) - (120 / 2) - 25, 90, 50, 50);
+			cropLabel.setIcon(cropIcon);
+
+			JLabel addLabel = new JLabel();
+			addLabel.setBounds((desktopPane_left.getBounds().width / 2) - (120 / 2) - 17, 12, 50, 50);
+			addLabel.setIcon(addIcon);
+
+			desktopPane_left.add(cropLabel);
+			desktopPane_left.add(addLabel);
 		}
 		catch(Exception e){}
-
-		
 		frame.revalidate();
 
 	}

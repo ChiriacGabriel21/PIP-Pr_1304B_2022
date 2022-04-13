@@ -26,7 +26,7 @@ public class MainFrame {
             public void componentResized(ComponentEvent e) {
                 if (e.getSource() == frame) {
 
-                    dsktRight.desktopPaneRight.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
+                    dsktRight.desktopPaneRight.setBounds(200, 0, frame.getBounds().width-220, frame.getBounds().height-50);
                     dsktLeft.desktopPaneLeft.setBounds(0, 0, 200, frame.getBounds().height);
                 }
             }});

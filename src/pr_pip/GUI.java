@@ -49,5 +49,7 @@ public class GUI {
 		mainFrame.frameResize(paneRight, paneLeft);
 
 		cropButton.addIcons(paneLeft);
+		
+		addButton.loadImage(paneRight, mainFrame);
 	}
 }

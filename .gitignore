@@ -5,8 +5,8 @@ tmp/
 *.bak
 *.swp
 *~.nib
-*.idea
-*.iml
+.idea/
+L7.iml
 local.properties
 .settings/
 .loadpath

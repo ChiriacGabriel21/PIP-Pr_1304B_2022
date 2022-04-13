@@ -6,7 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		System.out.println("noi sim sanatosi, asa am zis eu si Dragomir + Chiriac");
-
+		
 	}
 
 }

@@ -1,5 +1,6 @@
-import java.awt.EventQueue;
+import java.awt.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -9,8 +10,6 @@ import javax.swing.JSpinner;
 import javax.swing.JInternalFrame;
 import javax.swing.JDesktopPane;
 
-import java.awt.Color;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +18,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -29,6 +27,7 @@ import javax.swing.JList;
 import org.openide.awt.DropDownButtonFactory;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.File;
 
 
 public class V1 {
@@ -61,14 +60,17 @@ public class V1 {
 	private JPopupMenu createDropDownMenu(){
 		JPopupMenu popupMenu = new JPopupMenu();
 		 
-		JMenuItem menuItemCreateSpringProject = new JMenuItem("Spring Project");
-		popupMenu.add(menuItemCreateSpringProject);
+		JMenuItem menuItemCreateCar = new JMenuItem("Car");
+		popupMenu.add(menuItemCreateCar);
 		 
-		JMenuItem menuItemCreateHibernateProject = new JMenuItem("Hibernate Project");
-		popupMenu.add(menuItemCreateHibernateProject);
+		JMenuItem menuItemCreateTrafficLight = new JMenuItem("Traffic Light");
+		popupMenu.add(menuItemCreateTrafficLight);
 		 
-		JMenuItem menuItemCreateStrutsProject = new JMenuItem("Struts Project");
-		popupMenu.add(menuItemCreateStrutsProject);
+		JMenuItem menuItemCreateRoadSign = new JMenuItem("Road Sign");
+		popupMenu.add(menuItemCreateRoadSign);
+
+		JMenuItem menuItemCreateBuilding = new JMenuItem("Building");
+		popupMenu.add(menuItemCreateBuilding);
 		
 		return popupMenu;
 	}
@@ -79,39 +81,50 @@ public class V1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(200, 200, 1050, 900);
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setVisible(true);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.GRAY);
-		desktopPane.setBounds(103, 0, frame.getBounds().width, frame.getBounds().height);
+		desktopPane.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
 		frame.getContentPane().add(desktopPane);
-	/*	desktopPane.addComponentListener(new ComponentAdapter() {
+
+		JDesktopPane desktopPane_left = new JDesktopPane();
+		desktopPane_left.setBackground(Color.LIGHT_GRAY);
+		desktopPane_left.setBounds(0, 0, 200, frame.getBounds().height);
+		frame.getContentPane().add(desktopPane_left);
+
+		frame.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				 if (e.getSource() == frame) {
 
-				        desktopPane.setBounds(103, 0, frame.getBounds().width, frame.getBounds().height);
+				        desktopPane.setBounds(200, 0, frame.getBounds().width, frame.getBounds().height);
+					 	desktopPane_left.setBounds(0, 0, 200, frame.getBounds().height);
 			}
-		}});*/
+		}});
 		
-		JDesktopPane desktopPane_left = new JDesktopPane();
-		desktopPane_left.setBackground(Color.LIGHT_GRAY);
-		desktopPane_left.setBounds(0, 0, 103, frame.getBounds().height);
-		frame.getContentPane().add(desktopPane_left);
+
 		
 		JButton btnAdd = new JButton("ADD");
-		btnAdd.setBounds(10, 11, 89, 23);
+		btnAdd.setBounds((desktopPane_left.getBounds().width/2) - (89/2), 11, 89, 50);
 		desktopPane_left.add(btnAdd);
 		
-		JPopupMenu popupMenu = createDropDownMenu(); // created above
-		ImageIcon icon = new ImageIcon("D:\\work\\1304B\\PIP-Pr_1304B_2022\\src\\test.png");
-		JButton dropDownButton = DropDownButtonFactory.createDropDownButton(icon, popupMenu);
-		dropDownButton.setBounds(10, 50, 89, 23);
-		desktopPane_left.add(dropDownButton);
+		JPopupMenu popupMenu = createDropDownMenu();
+		try {
+			Image image = ImageIO.read(new File("./src/test.png")).getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+			JButton dropDownButton = DropDownButtonFactory.createDropDownButton(new ImageIcon(image), popupMenu);
+			dropDownButton.setBounds((desktopPane_left.getBounds().width/2) - (89/2), 100, 89, 50);
+			desktopPane_left.add(dropDownButton);
+		}
+		catch(Exception e){}
+
 		
 		frame.revalidate();
-
 
 	}
 }

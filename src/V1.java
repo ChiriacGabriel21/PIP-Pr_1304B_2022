@@ -86,14 +86,14 @@ public class V1 {
 		desktopPane.setBackground(Color.GRAY);
 		desktopPane.setBounds(103, 0, frame.getBounds().width, frame.getBounds().height);
 		frame.getContentPane().add(desktopPane);
-		desktopPane.addComponentListener(new ComponentAdapter() {
+	/*	desktopPane.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				 if (e.getSource() == frame) {
 
 				        desktopPane.setBounds(103, 0, frame.getBounds().width, frame.getBounds().height);
 			}
-		}});
+		}});*/
 		
 		JDesktopPane desktopPane_left = new JDesktopPane();
 		desktopPane_left.setBackground(Color.LIGHT_GRAY);

@@ -57,7 +57,7 @@ local.properties
 .scala_dependencies
 .worksheet
 
-.gradle
+
 .idea/
 !.idea/icon*.png
 *.iml

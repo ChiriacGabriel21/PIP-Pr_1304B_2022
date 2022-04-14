@@ -1,6 +1,6 @@
 # Grupa 1304B - Proiect nr.1
 
-Componenta
+Membri:
 -
 (TL) Munteanu Miruna-Elena
 

@@ -50,7 +50,7 @@ public class AddButton {
 			h=dsktPane.label.getBounds().height;
 			w=w-(h-dsktPane.label.getBounds().height);
 			}
-		
+		dsktPane.label.setBounds(0, 0, w, h);
 		Image1 = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);
 	} catch (IOException e) {
 		e.printStackTrace();

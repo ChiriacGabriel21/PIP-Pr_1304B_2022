@@ -9,8 +9,8 @@ public class GUI {
 	private DesktopPaneLeft paneLeft = new DesktopPaneLeft();
 	private DesktopPaneRight paneRight = new DesktopPaneRight();
 	private AddButton addButton = new AddButton();
-	private DrawButton drawButton = new DrawButton();
 	private CropButton cropButton = new CropButton();
+
 
 	/**
 	 * Launch the application.
@@ -44,13 +44,11 @@ public class GUI {
 		paneRight.desktopPaneRightInit(mainFrame);
 		paneLeft.desktopPaneLeftInit(mainFrame);
 		addButton.addButtonInit(paneLeft);
-		drawButton.drawButtonInit(paneLeft);
 		cropButton.cropButtonInit(paneLeft);
-		
-		
+
 		mainFrame.frameResize(paneRight, paneLeft);
 
-		paneLeft.addIcons();
+		cropButton.addIcons(paneLeft);
 		
 		addButton.loadImage(paneRight, mainFrame);
 	}

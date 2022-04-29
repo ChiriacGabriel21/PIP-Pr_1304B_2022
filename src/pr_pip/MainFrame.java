@@ -1,36 +1,35 @@
 package pr_pip;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class MainFrame {
-    public JFrame frame;
+public class MainFrame extends JFrame{
 
     public JFrame getFrame(){
-        return this.frame;
+        return this;
     }
 
-    public void frameInit(){
-        frame = new JFrame();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
+    public void frmInit(){
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setVisible(true);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().setLayout(null);
+
     }
 
-    public void frameResize(DesktopPaneRight dsktRight, DesktopPaneLeft dsktLeft){
-        frame.addComponentListener(new ComponentAdapter() {
+    public void frameResize(RightPanel dsktRight, DesktopPaneLeft dsktLeft){
+        this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                if (e.getSource() == frame) {
-
-                    dsktRight.desktopPaneRight.setBounds(200, 0, frame.getBounds().width-220, frame.getBounds().height-50);
-                    dsktLeft.desktopPaneLeft.setBounds(0, 0, 200, frame.getBounds().height);
+                if (e.getSource() == this) {
+                    dsktRight.setBounds(200, 0, getBounds().width-220, getBounds().height-50);
+                    dsktLeft.setBounds(0, 0, 200, getBounds().height);
                 }
             }});
-        frame.revalidate();
+        this.revalidate();
     }
 
 }

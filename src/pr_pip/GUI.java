@@ -7,10 +7,10 @@ public class GUI {
 
 	private MainFrame mainFrame = new MainFrame();
 	private DesktopPaneLeft paneLeft = new DesktopPaneLeft();
-	private DesktopPaneRight paneRight = new DesktopPaneRight();
-	private AddButton addButton = new AddButton();
+	private RightPanel rightPanel = new RightPanel();
+	private AddButton addButton = new AddButton("ADD");
 	private DrawButton drawButton = new DrawButton();
-	private CropButton cropButton = new CropButton();
+	private CropButton cropButton = new CropButton("CROP");
 
 	/**
 	 * Launch the application.
@@ -21,7 +21,7 @@ public class GUI {
 			public void run() {
 				try {
 					GUI window = new GUI();
-					window.mainFrame.frame.setVisible(true);
+					window.mainFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,18 +40,18 @@ public class GUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		mainFrame.frameInit();
-		paneRight.desktopPaneRightInit(mainFrame);
+		mainFrame.frmInit();
+		rightPanel.rightPanelInit(mainFrame);
 		paneLeft.desktopPaneLeftInit(mainFrame);
 		addButton.addButtonInit(paneLeft);
 		drawButton.drawButtonInit(paneLeft);
 		cropButton.cropButtonInit(paneLeft);
 		
 		
-		mainFrame.frameResize(paneRight, paneLeft);
+		mainFrame.frameResize(rightPanel, paneLeft);
 
 		paneLeft.addIcons();
 		
-		addButton.loadImage(paneRight, mainFrame);
+		addButton.loadImage(rightPanel, mainFrame);
 	}
 }

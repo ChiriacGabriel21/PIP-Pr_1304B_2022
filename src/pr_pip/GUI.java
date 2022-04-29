@@ -4,12 +4,13 @@ import java.awt.*;
 
 
 public class GUI {
+	private String[] choiceList = {"-","Car","Traffic Light","Road Sign","Building","+ADD Option"};
 
 	private MainFrame mainFrame = new MainFrame();
 	private DesktopPaneLeft paneLeft = new DesktopPaneLeft();
 	private RightPanel rightPanel = new RightPanel();
 	private AddButton addButton = new AddButton("ADD");
-	private DrawButton drawButton = new DrawButton();
+	private DrawButton drawButton = new DrawButton(choiceList);
 	private CropButton cropButton = new CropButton("CROP");
 
 	/**
@@ -53,5 +54,6 @@ public class GUI {
 		paneLeft.addIcons();
 		
 		addButton.loadImage(rightPanel, mainFrame);
+		rightPanel.getUserChoice(drawButton);
 	}
 }

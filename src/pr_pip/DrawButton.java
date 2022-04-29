@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class DrawButton {
+public class DrawButton extends JButton{
 
     private String[] choiceList = {"Car","Traffic Light","Road Sign","Building","+ADD Option"};
     public JComboBox chooseFromList;
@@ -14,8 +14,8 @@ public class DrawButton {
     public void drawButtonInit(DesktopPaneLeft dsktPane){
         chooseFromList = new JComboBox(choiceList);
         chooseFromList.setSelectedIndex(-1);
-        chooseFromList.setBounds((dsktPane.desktopPaneLeft.getBounds().width / 2)-30, 100, 120, 30);
-        dsktPane.desktopPaneLeft.add(chooseFromList);
+        chooseFromList.setBounds((dsktPane.getBounds().width / 2)-30, 100, 120, 30);
+        dsktPane.add(chooseFromList);
     }
 
  

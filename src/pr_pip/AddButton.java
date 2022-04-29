@@ -10,66 +10,60 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class AddButton {
-    public JButton btnAdd;
+public class AddButton extends JButton{
+
+	public AddButton(String s){
+		super(s);
+	}
 
     public void addButtonInit(DesktopPaneLeft dsktPane){
-    	
-        btnAdd = new JButton("ADD");
-        btnAdd.setBounds((dsktPane.desktopPaneLeft.getBounds().width / 2)-30, 22, 120, 30);
-        dsktPane.desktopPaneLeft.add(btnAdd);
+        this.setBounds((dsktPane.getBounds().width / 2)-30, 22, 120, 30);
+        dsktPane.add(this);
     }
-    
-    void imageLoad(DesktopPaneRight dsktPane, MainFrame frm)  
+
+    void imageLoad(RightPanel rightPanel, MainFrame frm)
 	 {
-    	
-    	
-		Image Image1;
-		FileDialog fd = new FileDialog(frm.frame, "Open", FileDialog.LOAD);
-	  fd.show();  
+		FileDialog fd = new FileDialog(frm, "Open", FileDialog.LOAD);
+	  	fd.show();
+
 	  if (fd.getFile() != null)    
 	  {  
 	   String d = (fd.getDirectory() + fd.getFile());
 	   
-	   Toolkit toolkit = Toolkit.getDefaultToolkit(); 
-	   
-	   dsktPane.label.setBounds(0, 0, dsktPane.desktopPaneRight.getBounds().width, dsktPane.desktopPaneRight.getBounds().height);
-	   Image1 = toolkit.getImage(d);
+	   Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+		  rightPanel.img = toolkit.getImage(d);
  
 	   try {
 		BufferedImage Image=ImageIO.read(new File(d));
 		int w=Image.getWidth();
 		int h=Image.getHeight();
-		if( w>dsktPane.label.getBounds().width)
+			if( w>rightPanel.label.getBounds().width)
 			{
-			w=dsktPane.label.getBounds().width;
-			h=h-(w-dsktPane.label.getBounds().width);
+				w=rightPanel.label.getBounds().width;
+				h=h-(w-rightPanel.label.getBounds().width);
 			}
-		if( h>dsktPane.label.getBounds().height)
+			if( h>rightPanel.label.getBounds().height)
 			{
-			h=dsktPane.label.getBounds().height;
-			w=w-(h-dsktPane.label.getBounds().height);
+				h=rightPanel.label.getBounds().height;
+				w=w-(h-rightPanel.label.getBounds().height);
 			}
-		dsktPane.label.setBounds(0, 0, w, h);
-		Image1 = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);
+		   rightPanel.img = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);
+		   rightPanel.setBounds(200, 0, w, h);
+		   rightPanel.repaint();
+		   rightPanel.revalidate();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-	 
-	   dsktPane.label.setIcon(new ImageIcon(Image1));
-	   
-	   
+
 	  }
 	 }
 
-    public void loadImage(DesktopPaneRight dsktPane, MainFrame frm)
+    public void loadImage(RightPanel rightPanel, MainFrame frm)
     {
-    	btnAdd.addActionListener(new ActionListener() {
+    	this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dsktPane.label.setIcon(null);
-				dsktPane.label.revalidate();
-				imageLoad(dsktPane, frm);
-				
+				imageLoad(rightPanel, frm);
 			}
 		});
     }

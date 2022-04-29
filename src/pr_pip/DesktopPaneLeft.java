@@ -6,14 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class DesktopPaneLeft {
-    public JDesktopPane desktopPaneLeft;
+public class DesktopPaneLeft extends JDesktopPane{
 
     public void desktopPaneLeftInit(MainFrame frm){
-        desktopPaneLeft = new JDesktopPane();
-        desktopPaneLeft.setBackground(Color.LIGHT_GRAY);
-        desktopPaneLeft.setBounds(0, 0, 200, frm.frame.getBounds().height);
-        frm.frame.getContentPane().add(desktopPaneLeft);
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setBounds(0, 0, 200, frm.getBounds().height);
+        frm.getContentPane().add(this);
     }
     
     public void addIcons(){
@@ -29,20 +27,20 @@ public class DesktopPaneLeft {
 
 
             JLabel drawLabel = new JLabel();
-            drawLabel.setBounds((desktopPaneLeft.getBounds().width / 2) - (120 / 2) - 19, 87, 50, 50);
+            drawLabel.setBounds((this.getBounds().width / 2) - (120 / 2) - 19, 87, 50, 50);
             drawLabel.setIcon(drawIcon);
 
             JLabel addLabel = new JLabel();
-            addLabel.setBounds((desktopPaneLeft.getBounds().width / 2) - (120 / 2) - 17, 12, 50, 50);
+            addLabel.setBounds((this.getBounds().width / 2) - (120 / 2) - 17, 12, 50, 50);
             addLabel.setIcon(addIcon);
             
             JLabel cropLabel = new JLabel();
-            cropLabel.setBounds((desktopPaneLeft.getBounds().width / 2) - (120 / 2) - 23, 170, 50, 50);
+            cropLabel.setBounds((this.getBounds().width / 2) - (120 / 2) - 23, 170, 50, 50);
             cropLabel.setIcon(cropIcon);
 
-            desktopPaneLeft.add(drawLabel);
-            desktopPaneLeft.add(addLabel);
-            desktopPaneLeft.add(cropLabel);
+            this.add(drawLabel);
+            this.add(addLabel);
+            this.add(cropLabel);
             
         }
         catch(Exception e){}

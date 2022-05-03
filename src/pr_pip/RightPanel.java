@@ -3,13 +3,18 @@ package pr_pip;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class RightPanel extends JPanel{
     public Image img;
     public JLabel label;
     public String userChoice = "";
+    public BufferedImage buffer;
+    boolean weightResized = false;
+    boolean heightResized = false;
 
-    private int x, y, x2, y2;
+    public int x, y, x2, y2;
+
 
     RightPanel(){
         x = y = x2 = y2 = 0;

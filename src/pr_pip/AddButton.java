@@ -60,6 +60,7 @@ public class AddButton extends JButton{
 		   rightPanel.setBounds(200, 0, w, h);
 		   rightPanel.repaint();
 		   rightPanel.revalidate();
+		   rightPanel.imageLoaded=true;
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

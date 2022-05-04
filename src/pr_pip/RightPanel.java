@@ -13,7 +13,7 @@ public class RightPanel extends JPanel{
     boolean weightResized = false;
     boolean heightResized = false;
     double resizeFactor;
-
+    boolean imageLoaded=false;
     public int x, y, x2, y2;
 
 
@@ -42,6 +42,12 @@ public class RightPanel extends JPanel{
     public void setEndPoint(int x, int y) {
         x2 = (x);
         y2 = (y);
+        if(x2>this.getWidth()){
+            x2=this.getWidth();
+        }
+        if(y2>this.getHeight()){
+            y2=this.getHeight();
+        }
     }
 
     public void drawPerfectRect(Graphics g, int x, int y, int x2, int y2) {
@@ -81,29 +87,34 @@ public class RightPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g2) {
         super.paintComponent(g2);
-        Graphics2D g = (Graphics2D) g2;
-        g.setStroke(new BasicStroke(3));
-        g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-        switch (userChoice) {
-            case "-":
-            case "+ADD Option":
-                break;
-            case "Car":
-                g.setColor(Color.RED);
-                drawPerfectRect(g, x, y, x2, y2);
-                break;
-            case "Traffic Light":
-                g.setColor(Color.YELLOW);
-                drawPerfectRect(g, x, y, x2, y2);
-                break;
-            case "Road Sign":
-                g.setColor(Color.GREEN);
-                drawPerfectRect(g, x, y, x2, y2);
-                break;
-            case "Building":
-                g.setColor(Color.BLUE);
-                drawPerfectRect(g, x, y, x2, y2);
-                break;
+        if (this.imageLoaded) {
+            Graphics2D g = (Graphics2D) g2;
+            g.setStroke(new BasicStroke(3));
+            g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+
+            switch (userChoice) {
+                case "-":
+                case "+ADD Option":
+                    break;
+                case "Car":
+                    g.setColor(Color.RED);
+                    drawPerfectRect(g, x, y, x2, y2);
+                    break;
+                case "Traffic Light":
+                    g.setColor(Color.YELLOW);
+                    drawPerfectRect(g, x, y, x2, y2);
+                    break;
+                case "Road Sign":
+                    g.setColor(Color.GREEN);
+                    drawPerfectRect(g, x, y, x2, y2);
+                    break;
+                case "Building":
+                    g.setColor(Color.BLUE);
+                    drawPerfectRect(g, x, y, x2, y2);
+                    break;
+            }
+
+
         }
 
     }

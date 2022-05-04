@@ -12,6 +12,7 @@ import javax.swing.*;
 
 public class AddButton extends JButton{
 
+
 	public AddButton(String s){
 		super(s);
 	}
@@ -35,23 +36,31 @@ public class AddButton extends JButton{
 		  rightPanel.img = toolkit.getImage(d);
  
 	   try {
-		BufferedImage Image=ImageIO.read(new File(d));
-		int w=Image.getWidth();
-		int h=Image.getHeight();
-			if( w>rightPanel.label.getBounds().width)
+		rightPanel.buffer =ImageIO.read(new File(d));
+		int w=rightPanel.buffer.getWidth();
+		int h=rightPanel.buffer.getHeight();
+		rightPanel.resizeFactor = 1;
+		
+		if( w>rightPanel.label.getBounds().width)
 			{
-				w=rightPanel.label.getBounds().width;
-				h=h-(w-rightPanel.label.getBounds().width);
+				rightPanel.resizeFactor = (double)w/rightPanel.label.getWidth();
+				h = (int) (h/rightPanel.resizeFactor);
+				w = (int) (w/rightPanel.resizeFactor);
+				rightPanel.heightResized = true;
 			}
-			if( h>rightPanel.label.getBounds().height)
+		
+		if( h>rightPanel.label.getBounds().height)
 			{
-				h=rightPanel.label.getBounds().height;
-				w=w-(h-rightPanel.label.getBounds().height);
+				rightPanel.resizeFactor = (double)h/rightPanel.label.getHeight();
+				w= (int) (w/rightPanel.resizeFactor);
+				h= (int) (h/rightPanel.resizeFactor);
+				rightPanel.weightResized = true;
 			}
 		   rightPanel.img = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);
 		   rightPanel.setBounds(200, 0, w, h);
 		   rightPanel.repaint();
 		   rightPanel.revalidate();
+		   rightPanel.imageLoaded=true;
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

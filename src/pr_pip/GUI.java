@@ -54,6 +54,8 @@ public class GUI {
 		paneLeft.addIcons();
 		
 		addButton.loadImage(rightPanel, mainFrame);
+		cropButton.cropImage(rightPanel);
 		rightPanel.getUserChoice(drawButton);
+		
 	}
 }

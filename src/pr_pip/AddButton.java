@@ -39,16 +39,21 @@ public class AddButton extends JButton{
 		rightPanel.buffer =ImageIO.read(new File(d));
 		int w=rightPanel.buffer.getWidth();
 		int h=rightPanel.buffer.getHeight();
+		rightPanel.resizeFactor = 1;
+		
 		if( w>rightPanel.label.getBounds().width)
 			{
-				h=h-(w-rightPanel.label.getBounds().width-250)-250;
-				w=rightPanel.label.getBounds().width-250;
+				rightPanel.resizeFactor = (double)w/rightPanel.label.getWidth();
+				h = (int) (h/rightPanel.resizeFactor);
+				w = (int) (w/rightPanel.resizeFactor);
 				rightPanel.heightResized = true;
 			}
-			if( h>rightPanel.label.getBounds().height)
+		
+		if( h>rightPanel.label.getBounds().height)
 			{
-				w=w-(h-rightPanel.label.getBounds().height-250)-250;
-				h=rightPanel.label.getBounds().height-250;
+				rightPanel.resizeFactor = (double)h/rightPanel.label.getHeight();
+				w= (int) (w/rightPanel.resizeFactor);
+				h= (int) (h/rightPanel.resizeFactor);
 				rightPanel.weightResized = true;
 			}
 		   rightPanel.img = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);

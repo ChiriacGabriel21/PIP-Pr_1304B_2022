@@ -12,6 +12,7 @@ public class RightPanel extends JPanel{
     public BufferedImage buffer;
     boolean weightResized = false;
     boolean heightResized = false;
+    double resizeFactor;
 
     public int x, y, x2, y2;
 
@@ -26,8 +27,9 @@ public class RightPanel extends JPanel{
 
     public void rightPanelInit(MainFrame frm){
         label = new JLabel();
-        label.setBounds(200, 0, frm.getBounds().width, frm.getBounds().height);
-        this.setBounds(200, 0, frm.getBounds().width, frm.getBounds().height);
+        label.setBounds(200, 0, frm.getBounds().width-230, frm.getBounds().height);
+        System.out.println("LABEL: " + (frm.getBounds().width-230) + " " + frm.getBounds().height);
+        this.setBounds(200, 0, frm.getBounds().width-200, frm.getBounds().height);
         frm.getContentPane().add(this);
         frm.getContentPane().add(label);
     }

@@ -61,7 +61,7 @@ public class CropButton extends JButton{
 		System.out.println(file.getPath());
 		File outputfile= new File("./src/Cropped/"+ rp.userChoice + "/" + rp.userChoice + "_" + dtf.format(now) + ".jpg");
 		ImageIO.write(crp, "jpg", outputfile);
-		JOptionPane.showMessageDialog(rp, "Crop successfully");
+		JOptionPane.showMessageDialog(rp, "Cropped successfully!");
 
 	}
 	public void cropImage(RightPanel rightPanel)

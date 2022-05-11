@@ -9,9 +9,9 @@ public class GUI {
 	private MainFrame mainFrame = new MainFrame();
 	private DesktopPaneLeft paneLeft = new DesktopPaneLeft();
 	private RightPanel rightPanel = new RightPanel();
-	private AddButton addButton = new AddButton("ADD");
+	private AddButton addButton = new AddButton("ADD IMAGE");
 	private DrawButton drawButton = new DrawButton(choiceList);
-	private CropButton cropButton = new CropButton("CROP");
+	private CropButton cropButton = new CropButton("CROP IMAGE");
 
 	/**
 	 * Launch the application.

@@ -12,6 +12,7 @@ public class MainFrame extends JFrame{
     }
 
     public void frmInit(){
+    	this.setTitle("Annotations App");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
 

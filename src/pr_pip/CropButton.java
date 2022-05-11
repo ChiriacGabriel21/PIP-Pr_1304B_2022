@@ -51,14 +51,11 @@ public class CropButton extends JButton{
 			rp.x-=result_x;
 			rp.x2+=result_x;
 		}
-		System.out.println("Coordonate:"+rp.x+" "+rp.y+" "+rp.x2+" "+rp.y2);
-		System.out.println("diferenta:"+(rp.x2-rp.x) +" "+(rp.y2-rp.y));
 		BufferedImage crp = rgbimage.getSubimage(rp.x,rp.y,rp.x2-rp.x ,rp.y2-rp.y);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 		LocalDateTime now = LocalDateTime.now();
 		File file = new File("./src/Cropped/" + rp.userChoice);
 		file.mkdir();
-		System.out.println(file.getPath());
 		File outputfile= new File("./src/Cropped/"+ rp.userChoice + "/" + rp.userChoice + "_" + dtf.format(now) + ".jpg");
 		ImageIO.write(crp, "jpg", outputfile);
 		JOptionPane.showMessageDialog(rp, "Cropped successfully!");

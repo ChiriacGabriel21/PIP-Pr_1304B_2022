@@ -22,6 +22,7 @@ public class AddButton extends JButton{
         dsktPane.add(this);
     }
 
+
     void imageLoad(RightPanel rightPanel, MainFrame frm)
 	 {
 		FileDialog fd = new FileDialog(frm, "Open", FileDialog.LOAD);
@@ -40,27 +41,24 @@ public class AddButton extends JButton{
 		int w=rightPanel.buffer.getWidth();
 		int h=rightPanel.buffer.getHeight();
 		rightPanel.resizeFactor = 1;
-		
-		if( w>rightPanel.label.getBounds().width)
-			{
-				rightPanel.resizeFactor = (double)w/rightPanel.label.getWidth();
-				h = (int) (h/rightPanel.resizeFactor);
-				w = (int) (w/rightPanel.resizeFactor);
+
+		if (w > rightPanel.label.getBounds().width) {
+				rightPanel.resizeFactor = (double) w / rightPanel.label.getWidth();
 				rightPanel.heightResized = true;
-			}
-		
-		if( h>rightPanel.label.getBounds().height)
-			{
-				rightPanel.resizeFactor = (double)h/rightPanel.label.getHeight();
-				w= (int) (w/rightPanel.resizeFactor);
-				h= (int) (h/rightPanel.resizeFactor);
+		}
+		if (h > rightPanel.label.getBounds().height) {
+				rightPanel.resizeFactor = Math.max(rightPanel.resizeFactor,(double) h / rightPanel.label.getHeight());
 				rightPanel.weightResized = true;
-			}
-		   rightPanel.img = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_DEFAULT);
-		   rightPanel.setBounds(200, 0, w, h);
-		   rightPanel.repaint();
-		   rightPanel.revalidate();
-		   rightPanel.imageLoaded=true;
+		}
+		w = (int) (w / rightPanel.resizeFactor);
+		h = (int) (h / rightPanel.resizeFactor);
+
+
+		rightPanel.img = toolkit.getImage(d).getScaledInstance(w, h, Image.SCALE_SMOOTH);
+		rightPanel.setBounds(200, 0, w, h);
+		rightPanel.repaint();
+		rightPanel.revalidate();
+		rightPanel.imageLoaded=true;
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

@@ -27,7 +27,7 @@ public class RightPanel extends JPanel{
 
     public void rightPanelInit(MainFrame frm){
         label = new JLabel();
-        label.setBounds(200, 0, frm.getBounds().width-230, frm.getBounds().height);
+        label.setBounds(200, 0, frm.getBounds().width-230, frm.getBounds().height-50);
         this.setBounds(200, 0, frm.getBounds().width-200, frm.getBounds().height);
         frm.getContentPane().add(this);
         frm.getContentPane().add(label);

@@ -10,19 +10,38 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+
+/**
+ * This class is a button that loads an image from a file
+ */
 public class AddButton extends JButton{
 
 
+	// A constructor that takes a string as a parameter.
+	// This is a constructor that takes a string as a parameter.
 	public AddButton(String s){
 		super(s);
 	}
 
+    // Initializing the button.
+    /**
+     * This function sets the bounds of the button to the center of the desktop pane
+     *
+     * @param dsktPane The DesktopPaneLeft object that the button will be added to.
+     */
     public void addButtonInit(DesktopPaneLeft dsktPane){
         this.setBounds((dsktPane.getBounds().width / 2)-30, 22, 120, 30);
         dsktPane.add(this);
     }
 
 
+    // This method is loading the image from the file.
+    /**
+     * It loads an image from the file system and displays it in the right panel
+     *
+     * @param rightPanel The RightPanel object
+     * @param frm the main frame of the application
+     */
     void imageLoad(RightPanel rightPanel, MainFrame frm)
 	 {
 		FileDialog fd = new FileDialog(frm, "Open", FileDialog.LOAD);
@@ -66,6 +85,13 @@ public class AddButton extends JButton{
 	  }
 	 }
 
+    // This method is loading the image from the file.
+    /**
+     * This function is used to load an image from the user's computer
+     *
+     * @param rightPanel The right panel of the main frame.
+     * @param frm The main frame of the application
+     */
     public void loadImage(RightPanel rightPanel, MainFrame frm)
     {
     	this.addActionListener(new ActionListener() {

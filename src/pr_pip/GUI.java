@@ -3,6 +3,10 @@ package pr_pip;
 import java.awt.*;
 
 
+/**
+ * This class is the main class of the program. It initializes the main frame, the desktop pane, the right panel, the add
+ * button, the draw button, and the crop button. It also adds the icons to the desktop pane
+ */
 public class GUI {
 	private String[] choiceList = {"-","Car","Traffic Light","Road Sign","Building","+ADD Option"};
 
@@ -15,6 +19,9 @@ public class GUI {
 
 	/**
 	 * Launch the application.
+	 */
+	/**
+	 * This function is used to create the GUI and make it visible
 	 */
 	public static void main(String[] args) {
 
@@ -33,12 +40,16 @@ public class GUI {
 	/**
 	 * Create the application.
 	 */
+	// A constructor. It is called when an object of the class is created.
 	public GUI() {
 		initialize();
 	}
 	
 	/**
 	 * Initialize the contents of the frame.
+	 */
+	/**
+	 * It initializes the main frame, the right panel, the left panel, the add button, the draw button, and the crop button
 	 */
 	private void initialize() {
 		mainFrame.frmInit();

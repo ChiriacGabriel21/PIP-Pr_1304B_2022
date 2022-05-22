@@ -14,16 +14,26 @@ import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+// Creating a new class called CropButton which is a JButton.
 public class CropButton extends JButton{
 
+
+    // The constructor of the class.
     public CropButton(String s){
         super(s);
     }
+    // Initializing the crop button.
     public void cropButtonInit(DesktopPaneLeft dsktPane){
 
     	this.setBounds((dsktPane.getBounds().width / 2)-30, 180, 120, 30);
         dsktPane.add(this);
     }
+
+	/**
+	 * It crops the image and saves it in the folder named after the user's choice
+	 *
+	 * @param rp the RightPanel object
+	 */
 	public void CreateCropButton(RightPanel rp) throws IOException{
 		
 		BufferedImage rgbimage=new BufferedImage(rp.buffer.getWidth(),rp.buffer.getHeight(),BufferedImage.TYPE_3BYTE_BGR);
@@ -61,6 +71,12 @@ public class CropButton extends JButton{
 		JOptionPane.showMessageDialog(rp, "Cropped successfully!");
 
 	}
+
+	/**
+	 * This function is used to crop the image
+	 *
+	 * @param rightPanel The right panel of the GUI.
+	 */
 	public void cropImage(RightPanel rightPanel)
 	{
 		this.addActionListener(new ActionListener() {

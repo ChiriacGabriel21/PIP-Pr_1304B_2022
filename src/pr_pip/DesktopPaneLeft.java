@@ -6,14 +6,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * This class is used to create the left side of the main frame
+ */
 public class DesktopPaneLeft extends JDesktopPane{
 
+    /**
+     * This function sets the background color of the desktop pane to light gray, sets the bounds of the desktop pane to
+     * the left side of the main frame, and adds the desktop pane to the main frame
+     *
+     * @param frm The main frame of the application.
+     */
     public void desktopPaneLeftInit(MainFrame frm){
         this.setBackground(Color.LIGHT_GRAY);
         this.setBounds(0, 0, 200, frm.getBounds().height);
         frm.getContentPane().add(this);
     }
     
+
+    /**
+     * It adds the icons to the panel
+     */
     public void addIcons(){
         try {
             Image drawImage = ImageIO.read(new File("./src/images/drawIcon.png")).getScaledInstance(40, 40, Image.SCALE_SMOOTH);

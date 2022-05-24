@@ -1,1 +1,0 @@
-Folderul in care se salveaza imaginile
